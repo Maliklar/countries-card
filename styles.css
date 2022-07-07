@@ -1,7 +1,7 @@
 body {
     margin: 0px;
     padding: 0px;
-    min-height: 100vh;
+    position: relative;
     font-family: Arial, Helvetica, sans-serif;
     background-color: darkslategrey;
 }
@@ -32,7 +32,7 @@ main {
     z-index: 88;
 }
 
-img {
+.flag-img {
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -53,4 +53,13 @@ img {
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.loading {
+    height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

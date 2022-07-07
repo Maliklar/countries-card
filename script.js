@@ -1,11 +1,14 @@
-// https://restcountries.com/v2/all
-
 const grid = document.getElementById("main-grid");
 const request = new XMLHttpRequest();
+const loadingScreen = document.getElementById("loading-screen");
+
 request.open("GET", "https://restcountries.com/v2/all");
 request.send();
 request.onreadystatechange = () => {
     if (request.readyState == 4 && request.status == 200) {
+        // Removing Loading Screen
+        loadingScreen.style.display = "none";
+
         const result = JSON.parse(request.responseText);
         result.forEach(country => {
 
@@ -17,15 +20,18 @@ request.onreadystatechange = () => {
             const icon = document.createElement("i");
             const currency = document.createElement("span");
 
+
             icon.setAttribute("class", "fa-solid fa-money-bill-wave");
             cardBody.setAttribute("class", "card-body");
             cardHeader.setAttribute("class", "card-header");
             flag.setAttribute("src", country.flags.png);
+            flag.setAttribute("class", "flag-img");
             card.setAttribute("class", "card");
             name.innerText = country.name;
             try {
                 currency.innerText = country.currencies[0].code + " ";
             } catch (e) {
+                // For Antartica Only
                 currency.innerText = "No Currency ";
             }
 
@@ -37,8 +43,6 @@ request.onreadystatechange = () => {
             card.appendChild(cardBody);
 
             grid.appendChild(card);
-
         });
-
     }
 }
