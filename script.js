@@ -18,27 +18,31 @@ request.onreadystatechange = () => {
             const cardBody = document.createElement("div");
             const name = document.createElement("H4");
             const icon = document.createElement("i");
-            const currency = document.createElement("span");
+            const language = document.createElement("span");
+            const divider = document.createElement("div");
 
 
-            icon.setAttribute("class", "fa-solid fa-money-bill-wave");
+            icon.setAttribute("class", "fa-solid fa-language");
             cardBody.setAttribute("class", "card-body");
             cardHeader.setAttribute("class", "card-header");
             flag.setAttribute("src", country.flags.png);
+            flag.setAttribute("alt", country.name + " Flag")
             flag.setAttribute("class", "flag-img");
             card.setAttribute("class", "card");
+            divider.setAttribute("class", "divider");
             name.innerText = country.name;
             try {
-                currency.innerText = country.currencies[0].code + " ";
+                language.innerText = country.languages[0].name + " ";
             } catch (e) {
                 // For Antartica Only
-                currency.innerText = "No Currency ";
+                language.innerText = "No Language ";
             }
 
-            currency.appendChild(icon);
+            language.appendChild(icon);
             cardHeader.appendChild(flag);
             cardBody.appendChild(name);
-            cardBody.appendChild(currency);
+            cardBody.appendChild(divider);
+            cardBody.appendChild(language);
             card.appendChild(cardHeader);
             card.appendChild(cardBody);
 
